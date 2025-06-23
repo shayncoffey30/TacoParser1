@@ -24,7 +24,7 @@ namespace LoggingKata
             // Use File.ReadAllLines(path) to grab all the lines from your csv file. 
             // Optional: Log an error if you get 0 lines and a warning if you get 1 line
             string[] lines = File.ReadAllLines(csvPath);
-            if (lines.Length == 0)
+            //if (lines.Length == 0)
             {
                 logger.LogError("file has no input");
 
@@ -85,19 +85,21 @@ namespace LoggingKata
                     var corB = new GeoCoordinate();
                     corB.Latitude = locB.Location.Latitude;
                     corB.Longitude = locB.Location.Longitude;
+
+                    if (corA.GetDistanceTo(corB) > distance)
+                    {
+                        distant = corA.GetDistanceTo(corB);
+                        tacoBell1 = locA;
+                        tacoBell2 = locB;
+
+                    }
                 }
 
 
                 // Now, compare the two using '.GetDistanceTo()', which returns a double
 
                 // If the distance is greater than the currently saved distance, update the distance and the two 'ITrackable' vari
-                if (corA.GetDistanceTo(corB) > distance)
-                {
-                    distant = corA.GetDistanceTo(corB);
-                    tacoBell1 = locA;
-                    tacoBell2 = locB;
 
-                }
             }
 
             // NESTED LOOPS SECTION COMPLETE ---------------------

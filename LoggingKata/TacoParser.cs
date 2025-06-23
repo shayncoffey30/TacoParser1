@@ -64,9 +64,6 @@ namespace LoggingKata
             return tacoBell;
         }
 
-        public object Parse(object line)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }
